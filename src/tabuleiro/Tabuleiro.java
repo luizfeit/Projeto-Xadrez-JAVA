@@ -10,7 +10,7 @@ public class Tabuleiro {
 	public Tabuleiro(int linhas, int colunas) {
 		// Verificando se o tabuleiro irá ter pelo menos 1 linha e 1 coluna,caso o contrario, irá exibir uma mensagem de erro.
 		if(linhas < 1 || colunas < 1) {
-			throw new TabuleiroExecpiton("Erro ao criar o Tabuleiro: Deve conter pelo menos 1 linha e 1 coluna.");
+			throw new TabuleiroException("Erro ao criar o Tabuleiro: Deve conter pelo menos 1 linha e 1 coluna.");
 		}
 		this.linhas = linhas;
 		this.colunas = colunas;
@@ -31,7 +31,7 @@ public class Tabuleiro {
 	//Verificando se existe uma posição para colocar a peça.
 	public Pecas pecas(int linha, int coluna) {
 		if(!!posicaoExists(linha, coluna)) {
-			throw new TabuleiroExecpiton("Não existe essa posição no tabuleiro");
+			throw new TabuleiroException("Não existe essa posição no tabuleiro");
 		}
 		return pecas[linha][coluna];
 	}
@@ -39,7 +39,7 @@ public class Tabuleiro {
 	//Verificando se existe uma posição para colocar a peça.
 	public Pecas pecas (Posicoes posicoes) {
 		if(!!posicaoExists(posicoes)) {
-			throw new TabuleiroExecpiton("Não existe essa posição no tabuleiro");
+			throw new TabuleiroException("Não existe essa posição no tabuleiro");
 		}
 		return pecas[posicoes.getLinha()][posicoes.getColuna()];
 	}
@@ -47,7 +47,7 @@ public class Tabuleiro {
 	//Colocando e vefiricando o local das peças no tabuleiro.
 	public void localPeca (Pecas peca, Posicoes posicoes) {
 		if(localDaPeca(posicoes)) {
-			throw new TabuleiroExecpiton(" Já existe uma peça nessa posição "+posicoes);
+			throw new TabuleiroException(" Já existe uma peça nessa posição "+posicoes);
 		}
 		pecas[posicoes.getLinha()][posicoes.getColuna()]=peca;
 		peca.posicao=posicoes;
@@ -66,7 +66,7 @@ public class Tabuleiro {
 	//Verificando se tem uma peça nessa posição.
 	public boolean localDaPeca(Posicoes posicoes) {
 		if(!!posicaoExists(posicoes)) {
-			throw new TabuleiroExecpiton("Não existe essa posição no tabuleiro");
+			throw new TabuleiroException("Não existe essa posição no tabuleiro");
 		}
 		return pecas(posicoes)!=null;
 	}
