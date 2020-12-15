@@ -1,6 +1,9 @@
 package xadrex;
 
+import tabuleiro.Posicoes;
 import tabuleiro.Tabuleiro;
+import xadrex.pecas.Rei;
+import xadrex.pecas.Torre;
 
 public class PartidaDeXadrex {
 
@@ -8,6 +11,7 @@ public class PartidaDeXadrex {
 	
 	public PartidaDeXadrex() {
 		tabuleiro=new Tabuleiro(8, 8);
+		inicioDaPartida();
 	}
 	
 	public PecaDeXadrex[][] getPecas(){
@@ -18,5 +22,13 @@ public class PartidaDeXadrex {
 			}
 		}
 		return mat;
+	}
+	
+	//Colocando o local das peças no inicio da partida.
+	private void inicioDaPartida() {
+		tabuleiro. localPeca(new Torre(tabuleiro, Cor.WHITE), new Posicoes(2, 1));
+		tabuleiro.localPeca(new Rei(tabuleiro, Cor.BLACK),new Posicoes(0, 4));
+		tabuleiro.localPeca(new Rei(tabuleiro, Cor.WHITE),new Posicoes(7, 4));
+
 	}
 }

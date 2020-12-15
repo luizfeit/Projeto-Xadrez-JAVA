@@ -36,4 +36,9 @@ public class Tabuleiro {
 	public Pecas pecas (Posicoes posicoes) {
 		return pecas[posicoes.getLinha()][posicoes.getColuna()];
 	}
+	//Colocando oi local das peças no tabuleiro.
+	public void localPeca (Pecas peca, Posicoes posicoes) {
+		pecas[posicoes.getLinha()][posicoes.getColuna()]=peca;
+		peca.posicao=posicoes;
+	}
 }
