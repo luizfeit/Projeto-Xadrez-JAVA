@@ -1,8 +1,14 @@
 package application;
 
+import xadrex.Cor;
 import xadrex.PecaDeXadrex;
 
 public class UI {
+	
+	public static final String ANSI_RESET="\u001B[0m";
+	public static final String ANSI_YELLOW="\u001B[33m";
+	public static final String ANSI_WHITE="\u001B[37m";
+
 
 	//Imprimir as colunas no tabuleiro.
 	public static void printTabuleiro(PecaDeXadrex[][] pecas) {
@@ -21,7 +27,12 @@ public class UI {
 			System.out.print("-");
 		}
 		else {
-			System.out.print(pecas);
+			if(pecas.getCor()==Cor.WHITE) {
+				System.out.print(ANSI_WHITE+pecas+ANSI_RESET);
+			}
+			else {
+				System.out.print(ANSI_YELLOW+pecas+ANSI_RESET);
+			}
 		}
 		System.out.print(" ");
 	}
