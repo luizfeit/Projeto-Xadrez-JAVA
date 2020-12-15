@@ -1,6 +1,9 @@
 package xadrex;
 
+import tabuleiro.Pecas;
+import tabuleiro.Posicoes;
 import tabuleiro.Tabuleiro;
+import tabuleiro.TabuleiroException;
 import xadrex.pecas.Rei;
 import xadrex.pecas.Torre;
 
@@ -23,8 +26,32 @@ public class PartidaDeXadrex {
 		return mat;
 	}
 	
+	public PecaDeXadrex perfomaceMovimentoXadrex(XadrexPosicao origemPosicao, XadrexPosicao posicaoDeDestino) {
+		Posicoes origem= origemPosicao.toPosicoes(); 
+		Posicoes destino= posicaoDeDestino.toPosicoes();
+		validarFontePosicao(origem);
+		Pecas capturarPeca=andar(origem,destino);
+		return (PecaDeXadrex)capturarPeca;
+	}
+	
+	private Pecas andar(Posicoes fonte, Posicoes destino) {
+		if(tabuleiro.localDaPeca(destino)) {
+			throw new TabuleiroException(" Já existe uma peça nessa posição "+destino);
+		}
+		Pecas p=tabuleiro.removerPecas(fonte);
+		Pecas capturarPecas= tabuleiro.removerPecas(destino);
+		tabuleiro.localizacaoPeca(p,destino);
+		return capturarPecas;
+	}
+	
+	private void validarFontePosicao(Posicoes posicoes) {
+		if (!tabuleiro.localDaPeca(posicoes)) {
+			throw new XadrexException("Não existe peça na posição escolhida");
+		}
+	}
+	
 	private void novoLugarPeca(char coluna,int linha,PecaDeXadrex pecas) {
-		tabuleiro.localPeca(pecas,new XadrexPosicao(coluna, linha).toPosicoes());	
+		tabuleiro.localizacaoPeca(pecas,new XadrexPosicao(coluna, linha).toPosicoes());	
 	}
 	
 	//Colocando o local das peças no inicio da partida.

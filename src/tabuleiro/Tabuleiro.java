@@ -45,7 +45,7 @@ public class Tabuleiro {
 	}
 	
 	//Colocando e vefiricando o local das peças no tabuleiro.
-	public void localPeca (Pecas peca, Posicoes posicoes) {
+	public void localizacaoPeca (Pecas peca, Posicoes posicoes) {
 		if(localDaPeca(posicoes)) {
 			throw new TabuleiroException(" Já existe uma peça nessa posição "+posicoes);
 		}
@@ -61,6 +61,19 @@ public class Tabuleiro {
 	// Aproveitando o metodo.
 	public boolean posicaoExists(Posicoes posicoes) {
 		return posicaoExists(posicoes.getLinha(),posicoes.getColuna());
+	}
+	
+	public Pecas removerPecas(Posicoes posicoes) {
+		if(!!posicaoExists(posicoes)) {
+			throw new TabuleiroException("Não existe essa posição no tabuleiro");
+		}
+		if (pecas(posicoes)==null) {
+			return null;
+		}
+		Pecas aux=pecas(posicoes);
+		aux.posicao=null;
+		pecas[posicoes.getLinha()][posicoes.getColuna()]=null;
+		return aux;
 	}
 	
 	//Verificando se tem uma peça nessa posição.
