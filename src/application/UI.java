@@ -15,7 +15,7 @@ public class UI {
 		}
 		System.out.println("  a b c d e f g h");
 	}
-	//Imprimir as peças no tabuleiro.
+	//Imprimir as peças no tabuleiro. 
 	private static void PrintPecas(PecaDeXadrex pecas) {
 		if(pecas==null) {
 			System.out.print("-");
