@@ -52,6 +52,7 @@ public class Tabuleiro {
 		pecas[posicoes.getLinha()][posicoes.getColuna()]=peca;
 		peca.posicao=posicoes;
 	}
+	
 	//Condição complea para ver se a posição existe.
 	private boolean posicaoExists(int linha,int coluna) {
 

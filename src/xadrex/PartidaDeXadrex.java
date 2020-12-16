@@ -48,6 +48,9 @@ public class PartidaDeXadrex {
 		if (!tabuleiro.localDaPeca(posicoes)) {
 			throw new XadrexException("Não existe peça na posição escolhida");
 		}
+		if(!tabuleiro.pecas(posicoes).seTemPeloMenosAlgumMovimento()) {
+			throw new XadrexException("Não existe movimentos específicos para a peça escolhida");
+		}
 	}
 	
 	private void novoLugarPeca(char coluna,int linha,PecaDeXadrex pecas) {
