@@ -24,6 +24,12 @@ public class UI {
 			throw new InputMismatchException("Erro ao ler o XadrexPosicao. valor validos são a1 até h8");
 		}
 	}
+	
+	// Limpando a tela do console 
+	public static void clearScreen() {
+	 System.out.print("\033[H\033[2J");
+	 System.out.flush();
+	} 
 
 	// Imprimir as colunas no tabuleiro.
 	public static void printTabuleiro(PecaDeXadrex[][] pecas) {
